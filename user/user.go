@@ -14,7 +14,7 @@ func OutputScene(scene model.Scene) string {
 	if optionPresent(scene.Options) {
 		buffer.WriteString(fmt.Sprintf("\n\nOptions:"))
 		for i, option := range scene.Options {
-			buffer.WriteString(fmt.Sprintf("%b. %s", i+1, option))
+			buffer.WriteString(fmt.Sprintf("\n%v. %s", i+1, option.Option))
 		}
 	}
 	return buffer.String()
