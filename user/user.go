@@ -1,21 +1,23 @@
 package user
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/lukemerrett/go-explore/model"
 )
 
-// OutputScene takes a scene and outputs it to the user's console window
-func OutputScene(scene model.Scene) {
-	fmt.Printf("%s\n\n", scene.Title)
-	fmt.Printf("%s\n\n", scene.Body)
+// OutputScene takes a scene and builds the string to show to the user
+func OutputScene(scene model.Scene) string {
+	var buffer bytes.Buffer
+	buffer.WriteString(fmt.Sprintf("%s\n\n%s\n\n", scene.Title, scene.Body))
 
 	if optionPresent(scene.Options) {
-		fmt.Println("Options:")
+		buffer.WriteString(fmt.Sprintf("Options:"))
 		for i, option := range scene.Options {
-			fmt.Printf("%b. %s", i+1, option)
+			buffer.WriteString(fmt.Sprintf("%b. %s", i+1, option))
 		}
 	}
+	return buffer.String()
 }
 
 func optionPresent(list []model.Trigger) bool {
