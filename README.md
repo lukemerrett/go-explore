@@ -6,7 +6,15 @@ Text based adventure game framework written in Go
 
 *Image credit: [Ashley McNamara](https://github.com/ashleymcnamara/gophers)*
 
-## Getting Started
+## Quick Start Guide
+
+You can download the latest release and run the executable to play the example game
+
+[Click here to download the latest release](https://github.com/lukemerrett/go-explore/releases/download/1.3/go-explore.zip)
+
+To configure your own scenes, read the "Configuring The Scenes" guide below
+
+## Getting Started From Source
 
 1. [Download and install Golang](https://golang.org/doc/install)
 2. Set up and navigate to your `%GOPATH%` root
