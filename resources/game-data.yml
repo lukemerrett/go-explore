@@ -3,31 +3,46 @@ Configuration:
 Scenes:
   Beginning:
     Title: Outside The Maze
-    Body: X
+    Body: |
+          You stand at the edge of a large hedge maze
+          12 foot high stone walls face you to the east and west, stretching far as the eye can see
+          In front of you to the north is a small entrance, concealed under years of heavy foliage
+          To the left is a sign that reads "A grand prize awaits you in the center, enter if you dare"
     Start Scene: True
     Transitions:
       Bottom Center: Go north, and enter the maze
       Give Up: Leave the maze, never to return...
   Give Up:
     Title: Going Home
-    Body: You gave up, and left the maze uncomplete
+    Body: |
+          You gave up, and left the maze uncomplete
+          Whilst you wonder what may have awaited you behind those walls
+          You can't help but feel you made the right choice...
     End Scene: True
   Bottom Left:
-    Title: Bottom Left
-    Body: X
+    Title: Dead End
+    Body: |
+          The path ends abruptly at a stone wall.
+          On it, faint scratch marks can be seen on the ancient rock
+          At your feet, you notice similar marks in the soil, as if someone, or something, was dragged away...
     Transitions: 
       Bottom Center: Go east
   Bottom Center:
-    Title: Bottom Center
-    Body: X
+    Title: Junctions
+    Body: |
+          You stand at a fork in the walls.  
+          In each direction a path lies before you
     Transitions: 
       Mid Bottom Center: Go north
       Bottom Left: Go west
       Bottom Right: Go east
-      Begging: Go south
+      Beginning: Go south
   Bottom Right:
-    Title: Bottom Right
-    Body: X
+    Title: Overgrown
+    Body: |
+          The foliage here becomes almost oppressive, blocking what little light comes over the walls
+          Pulling apart the branches, you see the path continues on to the north
+          Though you will have to crawl under the vegetation to get through
     Transitions: 
       Mid Bottom Right: Go north
       Bottom Center: Go west
@@ -44,8 +59,13 @@ Scenes:
       Mid Bottom Left: Go west
       Bottom Center: Go south
   Mid Bottom Right:
-    Title: Mid Bottom Right
-    Body: X
+    Title: Dead End
+    Body: |
+          You rise off the ground the see another stone wall blocking your path
+          In the far corner, just below the wall, lies a shoe tangled in vines
+          You attempt to pick it up, however years of untempered growth have strengthen the roots like steel
+          As you pull away, you swear the vines had crept closer to your feet
+          Your only way back is the way you came...under the vegetation.
     Transitions: 
       Bottom Right: Go south
   Center Left:
