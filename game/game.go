@@ -10,8 +10,33 @@ import (
 	"strconv"
 )
 
-// OutputScene takes a scene and builds the string to show to the user
-func OutputScene(scene model.Scene) string {
+// RunGame runs the whole game loop
+func RunGame(gameData model.GameData) error {
+	currentScene := getFirstScene(gameData)
+
+	for true {
+		output := outputScene(currentScene)
+		fmt.Print(output)
+		nextScene, err := getNextScene(gameData, currentScene)
+		if err != nil {
+			return err
+		}
+		currentScene = nextScene
+	}
+
+	return nil
+}
+
+func getFirstScene(gameData model.GameData) model.Scene {
+	firstScene := model.Scene{}
+	for _, value := range gameData.Scenes {
+		firstScene = value
+		break
+	}
+	return firstScene
+}
+
+func outputScene(scene model.Scene) string {
 	var buffer bytes.Buffer
 	buffer.WriteString(fmt.Sprintf("%s\n\n%s", scene.Title, scene.Body))
 
@@ -26,8 +51,7 @@ func OutputScene(scene model.Scene) string {
 	return buffer.String()
 }
 
-// GetNextScene waits for the user to select the next scene from the options
-func GetNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
+func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
 	transitionCount := int64(0)
 	if transitionPresent(currentScene.Transitions) {
 		transitionCount = int64(len(currentScene.Transitions))

@@ -6,6 +6,25 @@ import (
 	"testing"
 )
 
+func TestGetFirstScene_GetsFirstScene(t *testing.T) {
+	gameData := model.GameData{
+		Scenes: map[string]model.Scene{
+			"Home": model.Scene{
+				Title: "First scene",
+			},
+			"Garden": model.Scene{
+				Title: "Next scene",
+			},
+		},
+	}
+
+	scene := getFirstScene(gameData)
+
+	if scene.Title != "First scene" {
+		t.Fail()
+	}
+}
+
 func TestOutputScene_WithOptions(t *testing.T) {
 	scene := model.Scene{
 		Title: "Sample",
@@ -16,7 +35,7 @@ func TestOutputScene_WithOptions(t *testing.T) {
 		},
 	}
 
-	output := OutputScene(scene)
+	output := outputScene(scene)
 
 	expectedValue := "Sample\n\nA body of text\n\n" +
 		"Options:\n1. An option\n2. Another option"
@@ -34,7 +53,7 @@ func TestOutputScene_WithNilOptions(t *testing.T) {
 		Transitions: nil,
 	}
 
-	output := OutputScene(scene)
+	output := outputScene(scene)
 
 	expectedValue := "Sample\n\nA body of text"
 
@@ -51,7 +70,7 @@ func TestOutputScene_WithEmptyOptions(t *testing.T) {
 		Transitions: make(map[string]string),
 	}
 
-	output := OutputScene(scene)
+	output := outputScene(scene)
 
 	expectedValue := "Sample\n\nA body of text"
 
