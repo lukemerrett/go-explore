@@ -9,11 +9,5 @@ type GameData struct {
 type Scene struct {
 	Title       string
 	Body        string
-	Transitions []Transition
-}
-
-// Transition maps between an option a user can choose and the next scene they will see
-type Transition struct {
-	Text     string
-	SceneKey string
+	Transitions map[string]string
 }
