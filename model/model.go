@@ -14,6 +14,6 @@ type Scene struct {
 
 // Transition maps between an option a user can choose and the next scene they will see
 type Transition struct {
-	Option   string
+	Text     string
 	SceneKey string
 }

@@ -14,24 +14,24 @@ func OutputScene(scene model.Scene) string {
 	var buffer bytes.Buffer
 	buffer.WriteString(fmt.Sprintf("%s\n\n%s", scene.Title, scene.Body))
 
-	if optionPresent(scene.Options) {
+	if transitionPresent(scene.Transitions) {
 		buffer.WriteString(fmt.Sprintf("\n\nOptions:"))
-		for i, option := range scene.Options {
-			buffer.WriteString(fmt.Sprintf("\n%v. %s", i+1, option.Option))
+		for i, transition := range scene.Transitions {
+			buffer.WriteString(fmt.Sprintf("\n%v. %s", i+1, transition.Text))
 		}
 	}
 	return buffer.String()
 }
 
 // GetNextScene waits for the user to select the next scene from the options
-func GetNextScene(currentScene model.Scene) model.Scene {
-	optionCount := int64(0)
-	if optionPresent(currentScene.Options) {
-		optionCount = int64(len(currentScene.Options))
+func GetNextScene(gameData model.GameData, currentScene model.Scene) model.Scene {
+	transitionCount := int64(0)
+	if transitionPresent(currentScene.Transitions) {
+		transitionCount = int64(len(currentScene.Transitions))
 	}
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Printf("\n\nPlease choose an option (1-%v):\n", optionCount)
+	fmt.Printf("\n\nPlease choose an option (1-%v):\n", transitionCount)
 
 	selectedOption := 1
 
@@ -39,16 +39,17 @@ func GetNextScene(currentScene model.Scene) model.Scene {
 		text, _ := reader.ReadString('\n')
 		selectedOption, err := strconv.ParseInt(text, 10, 64)
 
-		if err != nil || selectedOption > optionCount || selectedOption < optionCount {
-			fmt.Printf("\n\nPlease enter a number between 1-%v:\n", optionCount)
+		if err != nil || selectedOption > transitionCount || selectedOption < transitionCount {
+			fmt.Printf("\n\nPlease enter a number between 1-%v:\n", transitionCount)
 		} else {
 			break
 		}
 	}
 
-	return currentScene.Options[selectedOption-1].Scene
+	sceneKey := currentScene.Transitions[selectedOption-1].SceneKey
+	return gameData.Scenes[sceneKey]
 }
 
-func optionPresent(list []model.Trigger) bool {
+func transitionPresent(list []model.Transition) bool {
 	return list != nil && len(list) > 0
 }

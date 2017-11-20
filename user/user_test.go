@@ -10,14 +10,14 @@ func TestOutputScene_WithOptions(t *testing.T) {
 	scene := model.Scene{
 		Title: "Sample",
 		Body:  "A body of text",
-		Options: []model.Trigger{
-			model.Trigger{
-				Option: "An option",
-				Scene:  model.Scene{},
+		Transitions: []model.Transition{
+			model.Transition{
+				Text:     "An option",
+				SceneKey: "Sample 1",
 			},
-			model.Trigger{
-				Option: "Another option",
-				Scene:  model.Scene{},
+			model.Transition{
+				Text:     "Another option",
+				SceneKey: "Sample 2",
 			},
 		},
 	}
@@ -35,9 +35,9 @@ func TestOutputScene_WithOptions(t *testing.T) {
 
 func TestOutputScene_WithNilOptions(t *testing.T) {
 	scene := model.Scene{
-		Title:   "Sample",
-		Body:    "A body of text",
-		Options: nil,
+		Title:       "Sample",
+		Body:        "A body of text",
+		Transitions: nil,
 	}
 
 	output := OutputScene(scene)
@@ -52,9 +52,9 @@ func TestOutputScene_WithNilOptions(t *testing.T) {
 
 func TestOutputScene_WithEmptyOptions(t *testing.T) {
 	scene := model.Scene{
-		Title:   "Sample",
-		Body:    "A body of text",
-		Options: []model.Trigger{},
+		Title:       "Sample",
+		Body:        "A body of text",
+		Transitions: []model.Transition{},
 	}
 
 	output := OutputScene(scene)
