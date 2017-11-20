@@ -2,6 +2,10 @@
 
 Text based adventure game framework written in Go
 
+![Gopher Safari](gopher_safari.png)
+
+*Image credit: [Ashley McNamara](https://github.com/ashleymcnamara/gophers)*
+
 ## Getting Started
 
 1. [Download and install Golang](https://golang.org/doc/install)
