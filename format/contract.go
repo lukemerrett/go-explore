@@ -8,4 +8,5 @@ import (
 type Formatter interface {
 	FormatScene(model.Scene) string
 	GetNextScene(model.GameData, model.Scene) (model.Scene, error)
+	EndingScene()
 }

@@ -15,6 +15,7 @@ func RunGame(gameData model.GameData, formatter format.Formatter) error {
 		fmt.Print(output)
 
 		if currentScene.EndScene {
+			formatter.EndingScene()
 			break
 		}
 

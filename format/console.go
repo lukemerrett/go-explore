@@ -65,6 +65,13 @@ func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model
 	return model.Scene{}, fmt.Errorf("Could not match scene")
 }
 
+// EndingScene outputs the ending message
+func (ConsoleFormatter) EndingScene() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("\nPress enter to exit")
+	reader.ReadString('\n')
+}
+
 func getSelectedOption(reader *bufio.Reader, transitionCount int) (int, error) {
 	for {
 		text, _ := reader.ReadString('\n')
