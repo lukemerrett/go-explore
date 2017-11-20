@@ -13,6 +13,11 @@ func RunGame(gameData model.GameData, formatter format.Formatter) error {
 	for true {
 		output := formatter.FormatScene(currentScene)
 		fmt.Print(output)
+
+		if currentScene.EndScene {
+			break
+		}
+
 		nextScene, err := formatter.GetNextScene(gameData, currentScene)
 		if err != nil {
 			return err
