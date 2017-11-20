@@ -26,9 +26,10 @@ The format is:
 Configuration:
   Output Type: Console        # Only supports "Console" at the moment
 Scenes:
-  Scene Key:                  # The first scene is always the starting scene shown to the user
+  Scene Key:
     Title: Title of Scene
     Body: Body Text of Scene
+    Start Scene: true         # Can be true or false, if not specified, defaults to false
     End Scene: false          # Can be true or false, if not specified, defaults to false
     Transitions:
       Scene Key: Text For Transition
@@ -43,6 +44,7 @@ Scenes:
   Home:
     Title: Your home
     Body: A house on a street in a neighbourhood
+    Start Scene: true
     Transitions:
       Garden: Go to the garden
       Hallway: Go inside the house

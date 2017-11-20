@@ -31,8 +31,10 @@ func RunGame(gameData model.GameData, formatter format.Formatter) error {
 func getFirstScene(gameData model.GameData) model.Scene {
 	firstScene := model.Scene{}
 	for _, value := range gameData.Scenes {
-		firstScene = value
-		break
+		if value.StartScene {
+			firstScene = value
+			break
+		}
 	}
 	return firstScene
 }

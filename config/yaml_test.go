@@ -19,6 +19,7 @@ func TestLoadFromYaml_CanLoadYamlFile(t *testing.T) {
 	scene := gameData.Scenes["Home"]
 
 	assertS(t, "Your home", scene.Title)
+	assertB(t, true, scene.StartScene)
 	assertB(t, false, scene.EndScene)
 	assertS(t, "A house on a street in a neighbourhood", scene.Body)
 	assertS(t, "Go to the garden", scene.Transitions["Garden"])
@@ -27,6 +28,7 @@ func TestLoadFromYaml_CanLoadYamlFile(t *testing.T) {
 	scene = gameData.Scenes["Garden"]
 	assertS(t, "Your garden", scene.Title)
 	assertS(t, "A garden behind the house", scene.Body)
+	assertB(t, false, scene.StartScene)
 	assertB(t, true, scene.EndScene)
 }
 

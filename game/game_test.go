@@ -9,10 +9,11 @@ func TestGetFirstScene_GetsFirstScene(t *testing.T) {
 	gameData := model.GameData{
 		Scenes: map[string]model.Scene{
 			"Home": model.Scene{
-				Title: "First scene",
+				Title: "Next scene",
 			},
 			"Garden": model.Scene{
-				Title: "Next scene",
+				Title:      "First scene",
+				StartScene: true,
 			},
 		},
 	}

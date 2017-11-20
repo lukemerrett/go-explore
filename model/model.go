@@ -15,6 +15,7 @@ type Configuration struct {
 type Scene struct {
 	Title       string            `yaml:"Title"`
 	Body        string            `yaml:"Body"`
+	StartScene  bool              `yaml:"Start Scene"`
 	EndScene    bool              `yaml:"End Scene"`
 	Transitions map[string]string `yaml:"Transitions"`
 }
