@@ -26,7 +26,7 @@ The format is:
 Configuration:
   Output Type: Console        # Only supports "Console" at the moment
 Scenes:
-  Scene Key:
+  Scene Key:                  # The first scene is always the starting scene shown to the user
     Title: Title of Scene
     Body: Body Text of Scene
     End Scene: false          # Can be true or false, if not specified, defaults to false
