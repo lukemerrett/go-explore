@@ -39,6 +39,7 @@ func getFirstScene(gameData model.GameData) model.Scene {
 
 func outputScene(scene model.Scene) string {
 	var buffer bytes.Buffer
+	buffer.WriteString("\n\n---------------------------------\n")
 	buffer.WriteString(fmt.Sprintf("%s\n\n%s", scene.Title, scene.Body))
 
 	if transitionPresent(scene.Transitions) {
@@ -59,7 +60,13 @@ func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scen
 	}
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Printf("\n\nPlease choose an option (1-%v):\n", transitionCount)
+
+	switch transitionCount {
+	case 1:
+		fmt.Printf("\n\nPlease press 1:\n")
+	default:
+		fmt.Printf("\n\nPlease choose an option (1-%v):\n", transitionCount)
+	}
 
 	selectedOption := 0
 
@@ -70,7 +77,12 @@ func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scen
 		selectedOption, err := strconv.Atoi(text)
 
 		if err != nil || selectedOption > transitionCount || selectedOption < 1 {
-			fmt.Printf("\n\nPlease enter a number between 1-%v:\n", transitionCount)
+			switch transitionCount {
+			case 1:
+				fmt.Printf("\n\nPlease press 1:\n")
+			default:
+				fmt.Printf("\n\nPlease enter a number between 1-%v:\n", transitionCount)
+			}
 		} else {
 			break
 		}
