@@ -4,7 +4,7 @@ Scenes:
   Beginning:
     Title: Outside The Maze
     Body: |
-          You stand at the edge of a large hedge maze
+          You stand at the edge of a large fortified maze
           12 foot high stone walls face you to the east and west, stretching far as the eye can see
           In front of you to the north is a small entrance, concealed under years of heavy foliage
           To the left is a sign that reads "A grand prize awaits you in the center, enter if you dare"
@@ -47,14 +47,22 @@ Scenes:
       Mid Bottom Right: Go north
       Bottom Center: Go west
   Mid Bottom Left:
-    Title: Mid Bottom Left
-    Body: X
+    Title: Doorway
+    Body: |
+          Ahead, you see the rememants of an old doorway, its frame set into the stone
+          The wooden door itself lies torn to shreds further along the pathway
+          Splinters litter the floor at your feet.
     Transitions:
       Center Left: Go north
       Mid Bottom Center: Go east
   Mid Bottom Center:
-    Title: Mid Bottom Center
-    Body: X
+    Title: The Burrows
+    Body: |
+          As your trace the stone wall round, you notice a set of small mounds in the soil
+          Atop each lies a small hole, sinking rapidly into darkness
+          As you peer closer into one of the depressions, you hear a faint, sporadic clicking
+          Like fingernails tapping on wood
+          Like teeth closing together
     Transitions:
       Mid Bottom Left: Go west
       Bottom Center: Go south
