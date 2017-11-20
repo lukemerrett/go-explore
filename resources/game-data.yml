@@ -1,24 +1,94 @@
 Configuration:
   Output Type: Console
 Scenes:
-  Home:
-    Title: Your home
-    Body: A house on a street in a neighbourhood
+  Beginning:
+    Title: Outside The Maze
+    Body: X
+    Start Scene: True
     Transitions:
-      Garden: Go to the garden
-      Hallway: Go inside the house
-  Hallway:
-    Title: Hallway
-    Body: The inside hallway of the house
-    Transitions:
-      Upstairs: Go upstairs
-      Home: Go back outside
-  Upstairs:
-    Title: Upstairs
-    Body: The landing is empty
+      Bottom Center: Go north, and enter the maze
+      Give Up: Leave the maze, never to return...
+  Give Up:
+    Title: Going Home
+    Body: You gave up, and left the maze uncomplete
     End Scene: True
-  Garden:
-    Title: Your garden
-    Body: The garden at the back of the house
+  Bottom Left:
+    Title: X
+    Body: X
+    Transitions: null
+  Bottom Center:
+    Title: X
+    Body: X
+    Transitions: 
+      Mid Bottom Center: Go north
+      Begging: Go south
+  Bottom Right:
+    Title: X
+    Body: X
+    Transitions: null
+  Mid Bottom Left:
+    Title: X
+    Body: X
     Transitions:
-      Home: Go to the front door
+      Center Left: Go north
+      Mid Bottom Center: Go east
+  Mid Bottom Center:
+    Title: X
+    Body: X
+    Transitions:
+      Mid Bottom Left: Go west
+      Bottom Center: Go south
+  Mid Bottom Right:
+    Title: X
+    Body: X
+    Transitions: null
+  Center Left:
+    Title: X
+    Body: X
+    Transitions:
+      Mid Top Left: Go north
+      Mid Bottom Left: Go south
+  Center Center:
+    Title: X
+    Body: X
+    End Scene: True
+  Center Right:
+    Title: X
+    Body: X
+    Transitions: 
+      Center Center: Go west
+      Mid Top Right: Go north
+  Mid Top Left:
+    Title: X
+    Body: X
+    Transitions:
+      Mid Top Center: Go east
+      Center Left: Go south
+  Mid Top Center:
+    Title: X
+    Body: X
+    Transitions:
+      Top Center: Go north
+      Mid Top Left: Go west
+  Mid Top Right:
+    Title: X
+    Body: X
+    Transitions: 
+      Center Right: Go south
+      Mid Top Right: Go north
+  Top Left:
+    Title: X
+    Body: X
+    Transitions: null
+  Top Center:
+    Title: X
+    Body: X
+    Transitions:
+      Top Right: Go east
+      Mid Top Center: Go south
+  Top Right:
+    Title: X
+    Body: X
+    Transitions: 
+      Mid Top Right: Go south
+      Top Right: Go north
