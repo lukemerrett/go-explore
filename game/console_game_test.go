@@ -1,10 +1,30 @@
-package format
+package game
 
 import (
 	"fmt"
 	"github.com/lukemerrett/go-explore/model"
 	"testing"
 )
+
+func TestGetFirstScene_GetsFirstScene(t *testing.T) {
+	gameData := model.GameData{
+		Scenes: map[string]model.Scene{
+			"Home": model.Scene{
+				Title: "Next scene",
+			},
+			"Garden": model.Scene{
+				Title:      "First scene",
+				StartScene: true,
+			},
+		},
+	}
+
+	scene := getFirstScene(gameData)
+
+	if scene.Title != "First scene" {
+		t.Fail()
+	}
+}
 
 func TestOutputScene_WithOptions(t *testing.T) {
 	scene := model.Scene{
@@ -16,8 +36,7 @@ func TestOutputScene_WithOptions(t *testing.T) {
 		},
 	}
 
-	formatter := ConsoleFormatter{}
-	output := formatter.FormatScene(scene)
+	output := formatScene(scene)
 
 	expectedValue := "\n\n---------------------------------\nSample\n\nA body of text\n\n" +
 		"Options:\n1. An option\n2. Another option"
@@ -35,8 +54,7 @@ func TestOutputScene_WithNilOptions(t *testing.T) {
 		Transitions: nil,
 	}
 
-	formatter := ConsoleFormatter{}
-	output := formatter.FormatScene(scene)
+	output := formatScene(scene)
 
 	expectedValue := "\n\n---------------------------------\nSample\n\nA body of text"
 
@@ -53,8 +71,7 @@ func TestOutputScene_WithEmptyOptions(t *testing.T) {
 		Transitions: make(map[string]string),
 	}
 
-	formatter := ConsoleFormatter{}
-	output := formatter.FormatScene(scene)
+	output := formatScene(scene)
 
 	expectedValue := "\n\n---------------------------------\nSample\n\nA body of text"
 

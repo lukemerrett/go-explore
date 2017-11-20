@@ -1,4 +1,4 @@
-package format
+package game
 
 import (
 	"bufio"
@@ -11,12 +11,44 @@ import (
 	"strings"
 )
 
-// ConsoleFormatter takes a scene and formats it for display in the console
-type ConsoleFormatter struct {
+// ConsoleController manages the input and output between the game and the user over the command line.
+type ConsoleController struct{}
+
+// RunGame runs the whole game loop
+func (ConsoleController) RunGame(gameData model.GameData) error {
+	currentScene := getFirstScene(gameData)
+
+	for {
+		output := formatScene(currentScene)
+		fmt.Print(output)
+
+		if currentScene.EndScene {
+			endingScene()
+			break
+		}
+
+		nextScene, err := getNextScene(gameData, currentScene)
+		if err != nil {
+			return err
+		}
+		currentScene = nextScene
+	}
+
+	return nil
 }
 
-// FormatScene takes a scene and formats it for display in the console
-func (ConsoleFormatter) FormatScene(scene model.Scene) string {
+func getFirstScene(gameData model.GameData) model.Scene {
+	firstScene := model.Scene{}
+	for _, value := range gameData.Scenes {
+		if value.StartScene {
+			firstScene = value
+			break
+		}
+	}
+	return firstScene
+}
+
+func formatScene(scene model.Scene) string {
 	var buffer bytes.Buffer
 	buffer.WriteString("\n\n---------------------------------\n")
 	buffer.WriteString(fmt.Sprintf("%s\n\n%s", scene.Title, scene.Body))
@@ -33,8 +65,7 @@ func (ConsoleFormatter) FormatScene(scene model.Scene) string {
 	return buffer.String()
 }
 
-// GetNextScene takes a scene and waits for user input to move on to the next scene
-func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
+func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
 	transitionCount := 0
 	if transitionPresent(currentScene.Transitions) {
 		transitionCount = len(currentScene.Transitions)
@@ -65,8 +96,7 @@ func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model
 	return model.Scene{}, fmt.Errorf("Could not match scene")
 }
 
-// EndingScene outputs the ending message
-func (ConsoleFormatter) EndingScene() {
+func endingScene() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("\nPress enter to exit")
 	reader.ReadString('\n')
@@ -90,8 +120,6 @@ func getSelectedOption(reader *bufio.Reader, transitionCount int) (int, error) {
 			return selectedOption, nil
 		}
 	}
-
-	return -1, fmt.Errorf("Could not get selected option from user")
 }
 
 func orderKeys(transitions map[string]string) []string {
@@ -101,4 +129,8 @@ func orderKeys(transitions map[string]string) []string {
 	}
 	sort.Strings(keys)
 	return keys
+}
+
+func transitionPresent(transitions map[string]string) bool {
+	return transitions != nil && len(transitions) > 0
 }
