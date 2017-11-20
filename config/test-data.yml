@@ -7,3 +7,7 @@ Scenes:
     Transitions:
       Garden: Go to the garden
       Hallway: Go inside the house
+  Garden:
+    Title: Your garden
+    Body: A garden behind the house
+    End Scene: True

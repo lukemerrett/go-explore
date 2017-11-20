@@ -11,7 +11,12 @@ Scenes:
     Title: Hallway
     Body: The inside hallway of the house
     Transitions:
+      Upstairs: Go upstairs
       Home: Go back outside
+  Upstairs:
+    Title: Upstairs
+    Body: The landing is empty
+    End Scene: True
   Garden:
     Title: Your garden
     Body: The garden at the back of the house

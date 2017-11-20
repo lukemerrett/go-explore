@@ -24,11 +24,12 @@ The format is:
 
 ```yaml
 Configuration:
-  Output Type: Console  # Only supports "Console" at the moment
+  Output Type: Console        # Only supports "Console" at the moment
 Scenes:
   Scene Key:
     Title: Title of Scene
     Body: Body Text of Scene
+    End Scene: false          # Can be true or false, if not specified, defaults to false
     Transitions:
       Scene Key: Text For Transition
 ```
@@ -49,7 +50,12 @@ Scenes:
     Title: Hallway
     Body: The inside hallway of the house
     Transitions:
+      Upstairs: Go upstairs
       Home: Go back outside
+  Upstairs:
+    Title: Upstairs
+    Body: The landing is empty
+    End Scene: True
   Garden:
     Title: Your garden
     Body: The garden at the back of the house

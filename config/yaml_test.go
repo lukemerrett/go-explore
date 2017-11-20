@@ -14,14 +14,20 @@ func TestLoadFromYaml_CanLoadYamlFile(t *testing.T) {
 		t.Fail()
 	}
 
-	assert(t, "Console", gameData.Configuration.OutputType)
+	assertS(t, "Console", gameData.Configuration.OutputType)
 
 	scene := gameData.Scenes["Home"]
 
-	assert(t, "Your home", scene.Title)
-	assert(t, "A house on a street in a neighbourhood", scene.Body)
-	assert(t, "Go to the garden", scene.Transitions["Garden"])
-	assert(t, "Go inside the house", scene.Transitions["Hallway"])
+	assertS(t, "Your home", scene.Title)
+	assertB(t, false, scene.EndScene)
+	assertS(t, "A house on a street in a neighbourhood", scene.Body)
+	assertS(t, "Go to the garden", scene.Transitions["Garden"])
+	assertS(t, "Go inside the house", scene.Transitions["Hallway"])
+
+	scene = gameData.Scenes["Garden"]
+	assertS(t, "Your garden", scene.Title)
+	assertS(t, "A garden behind the house", scene.Body)
+	assertB(t, true, scene.EndScene)
 }
 
 func TestLoadFromYaml_FileDoesntExist(t *testing.T) {
@@ -32,7 +38,13 @@ func TestLoadFromYaml_FileDoesntExist(t *testing.T) {
 	}
 }
 
-func assert(t *testing.T, expected string, actual string) {
+func assertS(t *testing.T, expected string, actual string) {
+	if expected != actual {
+		t.Fail()
+	}
+}
+
+func assertB(t *testing.T, expected bool, actual bool) {
 	if expected != actual {
 		t.Fail()
 	}
