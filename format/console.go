@@ -66,7 +66,7 @@ func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model
 }
 
 func getSelectedOption(reader *bufio.Reader, transitionCount int) (int, error) {
-	for true {
+	for {
 		text, _ := reader.ReadString('\n')
 		text = strings.Replace(text, "\r\n", "", -1)
 

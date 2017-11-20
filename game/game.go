@@ -10,7 +10,7 @@ import (
 func RunGame(gameData model.GameData, formatter format.Formatter) error {
 	currentScene := getFirstScene(gameData)
 
-	for true {
+	for {
 		output := formatter.FormatScene(currentScene)
 		fmt.Print(output)
 
