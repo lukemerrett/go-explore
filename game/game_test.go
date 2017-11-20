@@ -10,15 +10,9 @@ func TestOutputScene_WithOptions(t *testing.T) {
 	scene := model.Scene{
 		Title: "Sample",
 		Body:  "A body of text",
-		Transitions: []model.Transition{
-			model.Transition{
-				Text:     "An option",
-				SceneKey: "Sample 1",
-			},
-			model.Transition{
-				Text:     "Another option",
-				SceneKey: "Sample 2",
-			},
+		Transitions: map[string]string{
+			"Scene 1": "An option",
+			"Scene 2": "Another option",
 		},
 	}
 
@@ -54,7 +48,7 @@ func TestOutputScene_WithEmptyOptions(t *testing.T) {
 	scene := model.Scene{
 		Title:       "Sample",
 		Body:        "A body of text",
-		Transitions: []model.Transition{},
+		Transitions: make(map[string]string),
 	}
 
 	output := OutputScene(scene)
