@@ -23,6 +23,8 @@ All the scenes and transitions are configured through a YAML file found in `reso
 The format is:
 
 ```yaml
+Configuration:
+  Output Type: Console  # Only supports "Console" at the moment
 Scenes:
   Scene Key:
     Title: Title of Scene
@@ -34,6 +36,8 @@ Scenes:
 For example:
 
 ```yaml
+Configuration:
+  Output Type: Console
 Scenes:
   Home:
     Title: Your home

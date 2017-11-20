@@ -14,6 +14,8 @@ func TestLoadFromYaml_CanLoadYamlFile(t *testing.T) {
 		t.Fail()
 	}
 
+	assert(t, "Console", gameData.Configuration.OutputType)
+
 	scene := gameData.Scenes["Home"]
 
 	assert(t, "Your home", scene.Title)

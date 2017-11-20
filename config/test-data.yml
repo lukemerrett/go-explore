@@ -1,3 +1,5 @@
+Configuration:
+  Output Type: Console
 Scenes:
   Home:
     Title: Your home
