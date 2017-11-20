@@ -8,6 +8,7 @@ import (
 	"github.com/lukemerrett/go-explore/model"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // RunGame runs the whole game loop
@@ -52,9 +53,9 @@ func outputScene(scene model.Scene) string {
 }
 
 func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
-	transitionCount := int64(0)
+	transitionCount := 0
 	if transitionPresent(currentScene.Transitions) {
-		transitionCount = int64(len(currentScene.Transitions))
+		transitionCount = len(currentScene.Transitions)
 	}
 
 	reader := bufio.NewReader(os.Stdin)
@@ -64,9 +65,11 @@ func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scen
 
 	for true {
 		text, _ := reader.ReadString('\n')
-		selectedOption, err := strconv.ParseInt(text, 10, 64)
+		text = strings.Replace(text, "\r\n", "", -1)
 
-		if err != nil || selectedOption > transitionCount || selectedOption < transitionCount {
+		selectedOption, err := strconv.Atoi(text)
+
+		if err != nil || selectedOption > transitionCount || selectedOption < 1 {
 			fmt.Printf("\n\nPlease enter a number between 1-%v:\n", transitionCount)
 		} else {
 			break
