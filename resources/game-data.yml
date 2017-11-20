@@ -49,7 +49,7 @@ Scenes:
   Mid Bottom Left:
     Title: Doorway
     Body: |
-          Ahead, you see the rememants of an old doorway, its frame set into the stone
+          Ahead, you see the remnants of an old doorway, its frame set into the stone
           The wooden door itself lies torn to shreds further along the pathway
           Splinters litter the floor at your feet.
     Transitions:
@@ -77,56 +77,97 @@ Scenes:
     Transitions: 
       Bottom Right: Go south
   Center Left:
-    Title: Center Left
-    Body: X
+    Title: The Door
+    Body: |
+          You approach the door laid askew across the floor
+          Solid metal hinges barely hold to the grain of the wood
+          Whatever hit the door must have done so which some force
+          Caught nestled under one hinge, you see a tuft of dark, brownish hair
     Transitions:
       Mid Top Left: Go north
       Mid Bottom Left: Go south
   Center Center:
-    Title: Center Center
-    Body: X
+    Title: The Tree
+    Body: |
+          The cave opens out into an enclosed room, dimly lit by candles flickering in the corner
+          In the middle, a jet black tree stands shrouded in vines
+          Each vine seeps with the sickly liquid, steadily flowing into the stream running under your feet
+          As you approach the tree, the clicking becomes louder.  No longer behind you, but from inside the tree itself
+          Silently, yet with purpose, tendrils reach out from the water, wrapping around your legs like a vice
+          As you struggle in vain to move, the clicking rises to fill the room, eminanting from the tree itself
+          The vines rise across your waist, to your shoulders, enveloping you, as the tree starts to turn
+          Your eyes grow wide, dark branches close off your senses...
+
+          The End.
     End Scene: True
   Center Right:
-    Title: Center Right
-    Body: X
+    Title: Deeper, Deeper
+    Body: |
+          You knock your head on an unseen rock, and duck lower as the tunnel shrinks
+          The clicking behind you grows more erractive, almost excited, as you bend lower into the opening
+          Ahead, you see a dim light peeking out from the cave...
     Transitions: 
       Center Center: Go west
-      Mid Top Right: Go north
   Mid Top Left:
-    Title: Mid Top Left
-    Body: X
+    Title: Footprints
+    Body: |
+          To the north, you see deep impressions of footprints
+          These start in a straight line, yet quickly circle round back towards you
+          The first part of their trail looks confident
+          The last is more frantic, the footprints wider apart, as if the owner was running
     Transitions:
       Top Left: Go north
       Mid Top Center: Go east
       Center Left: Go south
   Mid Top Center:
-    Title: Mid Top Center
-    Body: X
+    Title: Pillar
+    Body: |
+          Glass crunches underfoot as you approach a lone waist high pillar set in the middle of the path
+          A broken vase sits turned upend atop the stonework.  
+          A trail of jet black ooze trickles down the sides, long dried with time
     Transitions:
       Top Center: Go north
       Mid Top Left: Go west
   Mid Top Right:
-    Title: Mid Top Right
-    Body: X
+    Title: Growling
+    Body: |
+          Behind you, towards the tunnel's opening, you hear the same unsettling clicking approach
+          The space affords you no wiggle room, sound alone hints as to what is behind you
+          Your hands are bathed in the unidentifiable liquid, you feel it cling to your arms as you proceed forward
+          Whatever is behind you blocks your path, you must only go forward now
     Transitions: 
       Center Right: Go south
-      Top Right: Go north
   Top Left:
-    Title: Top Left
-    Body: X
+    Title: Mosaic
+    Body: |
+          Unlike the rest of the trail, the walls here are covered in mosaics
+          Most have worn to illegibility with time
+          One remains strangely unblemished.  You approach
+          The piece shows a lone person, wandering slowly through a maze
+          The maze is divided into squares, one with overgrown vegetation, one with a tattered door
+          On the topmost segment, you can just make out a set of familar looking mosaics
+          In the square, a large dark figure crouches, as if waiting
+          It's eyes towards a broken doorway
     Transitions: 
       Mid Top Left: Go south
       Top Center: Go east
   Top Center:
-    Title: Top Center
-    Body: X
+    Title: Squeeze
+    Body: |
+          As you approach the northern corner of the maze, the stone walls narrow along the pathway
+          Onwards to the east, you realise you will have to turn sideways and breath in to fit through the gap
     Transitions:
       Top Left: Go west
       Top Right: Go east
       Mid Top Center: Go south
   Top Right:
-    Title: Top Right
-    Body: X
+    Title: Fading Light
+    Body: |
+          With a lethargic pace, you squeeze along the now restricted path
+          You can no longer bend your head to see below you
+          Liquid laps over your feet, an unknown viscous substance that seeps into your shoes
+          To the south, the wall bends and arches into a small crawlspace
+          The only way forward is on your knees
     Transitions: 
       Mid Top Right: Go south
       Top Right: Go north
