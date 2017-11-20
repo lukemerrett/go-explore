@@ -13,81 +13,91 @@ Scenes:
     Body: You gave up, and left the maze uncomplete
     End Scene: True
   Bottom Left:
-    Title: X
+    Title: Bottom Left
     Body: X
-    Transitions: null
+    Transitions: 
+      Bottom Center: Go east
   Bottom Center:
-    Title: X
+    Title: Bottom Center
     Body: X
     Transitions: 
       Mid Bottom Center: Go north
+      Bottom Left: Go west
+      Bottom Right: Go east
       Begging: Go south
   Bottom Right:
-    Title: X
+    Title: Bottom Right
     Body: X
-    Transitions: null
+    Transitions: 
+      Mid Bottom Right: Go north
+      Bottom Center: Go west
   Mid Bottom Left:
-    Title: X
+    Title: Mid Bottom Left
     Body: X
     Transitions:
       Center Left: Go north
       Mid Bottom Center: Go east
   Mid Bottom Center:
-    Title: X
+    Title: Mid Bottom Center
     Body: X
     Transitions:
       Mid Bottom Left: Go west
       Bottom Center: Go south
   Mid Bottom Right:
-    Title: X
+    Title: Mid Bottom Right
     Body: X
-    Transitions: null
+    Transitions: 
+      Bottom Right: Go south
   Center Left:
-    Title: X
+    Title: Center Left
     Body: X
     Transitions:
       Mid Top Left: Go north
       Mid Bottom Left: Go south
   Center Center:
-    Title: X
+    Title: Center Center
     Body: X
     End Scene: True
   Center Right:
-    Title: X
+    Title: Center Right
     Body: X
     Transitions: 
       Center Center: Go west
       Mid Top Right: Go north
   Mid Top Left:
-    Title: X
+    Title: Mid Top Left
     Body: X
     Transitions:
+      Top Left: Go north
       Mid Top Center: Go east
       Center Left: Go south
   Mid Top Center:
-    Title: X
+    Title: Mid Top Center
     Body: X
     Transitions:
       Top Center: Go north
       Mid Top Left: Go west
   Mid Top Right:
-    Title: X
+    Title: Mid Top Right
     Body: X
     Transitions: 
       Center Right: Go south
-      Mid Top Right: Go north
+      Top Right: Go north
   Top Left:
-    Title: X
+    Title: Top Left
     Body: X
-    Transitions: null
+    Transitions: 
+      Mid Top Left: Go south
+      Top Center: Go east
   Top Center:
-    Title: X
+    Title: Top Center
     Body: X
     Transitions:
+      Top Left: Go west
       Top Right: Go east
       Mid Top Center: Go south
   Top Right:
-    Title: X
+    Title: Top Right
     Body: X
     Transitions: 
       Mid Top Right: Go south
