@@ -64,3 +64,15 @@ Scenes:
     Transitions:
       Home: Go to the front door
 ```
+
+If you want to add multi-line text with line breaks in yaml, use this format:
+
+```yaml
+  Garden:
+    Title: Your garden
+    Body: |
+          The garden at the back of the house
+          The shed lies empty and unused
+    Transitions:
+      Home: Go to the front door
+```
