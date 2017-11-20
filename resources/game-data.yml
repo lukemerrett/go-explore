@@ -1,0 +1,17 @@
+Scenes:
+  Home:
+    Title: Your home
+    Body: A house on a street in a neighbourhood
+    Transitions:
+      Garden: Go to the garden
+      Hallway: Go inside the house
+  Hallway:
+    Title: Hallway
+    Body: The inside hallway of the house
+    Transitions:
+      Home: Go back outside
+  Garden:
+    Title: Your garden
+    Body: The garden at the back of the house
+    Transitions:
+      Home: Go to the front door
