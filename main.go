@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/lukemerrett/go-explore/config"
+	"github.com/lukemerrett/go-explore/format"
 	"github.com/lukemerrett/go-explore/game"
 )
 
@@ -14,7 +15,8 @@ func main() {
 	gameData, err := config.LoadFromYaml(configFile)
 	handleError(err)
 
-	err = game.RunGame(gameData)
+	formatter := format.ConsoleFormatter{}
+	err = game.RunGame(gameData, formatter)
 	handleError(err)
 }
 

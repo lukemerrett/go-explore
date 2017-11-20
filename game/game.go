@@ -2,9 +2,9 @@ package game
 
 import (
 	"bufio"
-	"bytes"
 	"errors"
 	"fmt"
+	"github.com/lukemerrett/go-explore/format"
 	"github.com/lukemerrett/go-explore/model"
 	"os"
 	"strconv"
@@ -12,11 +12,11 @@ import (
 )
 
 // RunGame runs the whole game loop
-func RunGame(gameData model.GameData) error {
+func RunGame(gameData model.GameData, formatter format.Formatter) error {
 	currentScene := getFirstScene(gameData)
 
 	for true {
-		output := outputScene(currentScene)
+		output := formatter.FormatScene(currentScene)
 		fmt.Print(output)
 		nextScene, err := getNextScene(gameData, currentScene)
 		if err != nil {
@@ -35,22 +35,6 @@ func getFirstScene(gameData model.GameData) model.Scene {
 		break
 	}
 	return firstScene
-}
-
-func outputScene(scene model.Scene) string {
-	var buffer bytes.Buffer
-	buffer.WriteString("\n\n---------------------------------\n")
-	buffer.WriteString(fmt.Sprintf("%s\n\n%s", scene.Title, scene.Body))
-
-	if transitionPresent(scene.Transitions) {
-		buffer.WriteString(fmt.Sprintf("\n\nOptions:"))
-		i := 1
-		for _, value := range scene.Transitions {
-			buffer.WriteString(fmt.Sprintf("\n%v. %s", i, value))
-			i++
-		}
-	}
-	return buffer.String()
 }
 
 func getNextScene(gameData model.GameData, currentScene model.Scene) (model.Scene, error) {
