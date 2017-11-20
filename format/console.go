@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/lukemerrett/go-explore/model"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -23,8 +24,8 @@ func (ConsoleFormatter) FormatScene(scene model.Scene) string {
 	if transitionPresent(scene.Transitions) {
 		buffer.WriteString(fmt.Sprintf("\n\nOptions:"))
 		i := 1
-		for _, value := range scene.Transitions {
-			buffer.WriteString(fmt.Sprintf("\n%v. %s", i, value))
+		for _, key := range orderKeys(scene.Transitions) {
+			buffer.WriteString(fmt.Sprintf("\n%v. %s", i, scene.Transitions[key]))
 			i++
 		}
 	}
@@ -48,8 +49,23 @@ func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model
 		fmt.Printf("\n\nPlease choose an option (1-%v):\n", transitionCount)
 	}
 
-	selectedOption := 0
+	selectedOption, err := getSelectedOption(reader, transitionCount)
+	if err != nil {
+		return model.Scene{}, err
+	}
 
+	i := 1
+	for _, key := range orderKeys(currentScene.Transitions) {
+		if i == selectedOption {
+			return gameData.Scenes[key], nil
+		}
+		i++
+	}
+
+	return model.Scene{}, fmt.Errorf("Could not match scene")
+}
+
+func getSelectedOption(reader *bufio.Reader, transitionCount int) (int, error) {
 	for true {
 		text, _ := reader.ReadString('\n')
 		text = strings.Replace(text, "\r\n", "", -1)
@@ -64,16 +80,18 @@ func (ConsoleFormatter) GetNextScene(gameData model.GameData, currentScene model
 				fmt.Printf("\n\nPlease enter a number between 1-%v:\n", transitionCount)
 			}
 		} else {
-			break
+			return selectedOption, nil
 		}
 	}
 
-	i := 0
-	for key := range currentScene.Transitions {
-		if i == selectedOption {
-			return gameData.Scenes[key], nil
-		}
-	}
+	return -1, fmt.Errorf("Could not get selected option from user")
+}
 
-	return model.Scene{}, fmt.Errorf("Could not match scene")
+func orderKeys(transitions map[string]string) []string {
+	keys := make([]string, 0)
+	for key := range transitions {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+	return keys
 }
